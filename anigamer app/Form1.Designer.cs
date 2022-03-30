@@ -40,6 +40,8 @@ namespace anigamer_app
             this.title_condition = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.article_panel = new System.Windows.Forms.Panel();
+            this.article_output_box = new System.Windows.Forms.Label();
             this.Output_Box = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.Web_Search_Button1 = new FontAwesome.Sharp.IconButton();
@@ -53,9 +55,11 @@ namespace anigamer_app
             this.next_page_button = new FontAwesome.Sharp.IconButton();
             this.label5 = new System.Windows.Forms.Label();
             this.title_keyword = new System.Windows.Forms.TextBox();
+            this.article_closed_button = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.article_panel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +71,7 @@ namespace anigamer_app
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 584);
+            this.panelMenu.Size = new System.Drawing.Size(220, 838);
             this.panelMenu.TabIndex = 0;
             // 
             // Game_search_Button1
@@ -114,7 +118,7 @@ namespace anigamer_app
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(220, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 584);
+            this.panel1.Size = new System.Drawing.Size(917, 838);
             this.panel1.TabIndex = 1;
             // 
             // label4
@@ -159,12 +163,35 @@ namespace anigamer_app
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.article_panel);
             this.panel2.Controls.Add(this.Output_Box);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(909, 410);
+            this.panel2.Size = new System.Drawing.Size(917, 667);
             this.panel2.TabIndex = 5;
+            // 
+            // article_panel
+            // 
+            this.article_panel.AutoScroll = true;
+            this.article_panel.Controls.Add(this.article_output_box);
+            this.article_panel.Location = new System.Drawing.Point(19, 24);
+            this.article_panel.Name = "article_panel";
+            this.article_panel.Size = new System.Drawing.Size(898, 643);
+            this.article_panel.TabIndex = 6;
+            this.article_panel.Visible = false;
+            // 
+            // article_output_box
+            // 
+            this.article_output_box.AutoEllipsis = true;
+            this.article_output_box.AutoSize = true;
+            this.article_output_box.Font = new System.Drawing.Font("Nirmala UI", 14.25F);
+            this.article_output_box.ForeColor = System.Drawing.Color.White;
+            this.article_output_box.Location = new System.Drawing.Point(13, 24);
+            this.article_output_box.Name = "article_output_box";
+            this.article_output_box.Size = new System.Drawing.Size(0, 25);
+            this.article_output_box.TabIndex = 0;
+            this.article_output_box.Visible = false;
             // 
             // Output_Box
             // 
@@ -225,6 +252,7 @@ namespace anigamer_app
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.article_closed_button);
             this.panel3.Controls.Add(this.page_box);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
@@ -235,8 +263,9 @@ namespace anigamer_app
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(909, 171);
+            this.panel3.Size = new System.Drawing.Size(917, 171);
             this.panel3.TabIndex = 12;
+            this.panel3.UseWaitCursor = true;
             // 
             // page_box
             // 
@@ -245,6 +274,7 @@ namespace anigamer_app
             this.page_box.Name = "page_box";
             this.page_box.Size = new System.Drawing.Size(35, 29);
             this.page_box.TabIndex = 14;
+            this.page_box.UseWaitCursor = true;
             // 
             // label7
             // 
@@ -256,6 +286,7 @@ namespace anigamer_app
             this.label7.Size = new System.Drawing.Size(26, 21);
             this.label7.TabIndex = 16;
             this.label7.Text = "頁";
+            this.label7.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -267,6 +298,7 @@ namespace anigamer_app
             this.label6.Size = new System.Drawing.Size(58, 21);
             this.label6.TabIndex = 15;
             this.label6.Text = "跳到第";
+            this.label6.UseWaitCursor = true;
             // 
             // pre_page_button
             // 
@@ -279,6 +311,7 @@ namespace anigamer_app
             this.pre_page_button.Size = new System.Drawing.Size(39, 28);
             this.pre_page_button.TabIndex = 13;
             this.pre_page_button.UseVisualStyleBackColor = true;
+            this.pre_page_button.UseWaitCursor = true;
             this.pre_page_button.Click += new System.EventHandler(this.pre_page_button_Click);
             // 
             // next_page_button
@@ -292,6 +325,7 @@ namespace anigamer_app
             this.next_page_button.Size = new System.Drawing.Size(39, 28);
             this.next_page_button.TabIndex = 12;
             this.next_page_button.UseVisualStyleBackColor = true;
+            this.next_page_button.UseWaitCursor = true;
             this.next_page_button.Click += new System.EventHandler(this.next_page_Click);
             // 
             // label5
@@ -304,6 +338,7 @@ namespace anigamer_app
             this.label5.Size = new System.Drawing.Size(90, 21);
             this.label5.TabIndex = 10;
             this.label5.Text = "主題關鍵字";
+            this.label5.UseWaitCursor = true;
             // 
             // title_keyword
             // 
@@ -312,13 +347,30 @@ namespace anigamer_app
             this.title_keyword.Name = "title_keyword";
             this.title_keyword.Size = new System.Drawing.Size(100, 29);
             this.title_keyword.TabIndex = 11;
+            this.title_keyword.UseWaitCursor = true;
+            // 
+            // article_closed_button
+            // 
+            this.article_closed_button.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.article_closed_button.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.article_closed_button.IconColor = System.Drawing.Color.Black;
+            this.article_closed_button.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.article_closed_button.Location = new System.Drawing.Point(866, 135);
+            this.article_closed_button.Name = "article_closed_button";
+            this.article_closed_button.Size = new System.Drawing.Size(31, 33);
+            this.article_closed_button.TabIndex = 1;
+            this.article_closed_button.Text = "X";
+            this.article_closed_button.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.article_closed_button.UseVisualStyleBackColor = true;
+            this.article_closed_button.Visible = false;
+            this.article_closed_button.Click += new System.EventHandler(this.ariticle_closed_button_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1129, 584);
+            this.ClientSize = new System.Drawing.Size(1137, 838);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
             this.Name = "Form1";
@@ -329,6 +381,8 @@ namespace anigamer_app
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.article_panel.ResumeLayout(false);
+            this.article_panel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -358,6 +412,9 @@ namespace anigamer_app
         private TextBox page_box;
         private Label label7;
         private Label label6;
+        private Panel article_panel;
+        private Label article_output_box;
+        private FontAwesome.Sharp.IconButton article_closed_button;
     }
 }
 

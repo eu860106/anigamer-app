@@ -25,6 +25,8 @@ namespace anigamer_app
 
         private void Web_Search_Button1_Click(object sender, EventArgs e)
         {
+            ariticle_closed_button_Click(sender, e);
+
             if (web_input.Text.IndexOf("https://forum.gamer.com.tw/B.php?") == -1)
             {
                 Output_Box.Text += "輸入網址錯誤\n";
@@ -63,11 +65,26 @@ namespace anigamer_app
             if(target.IndexOf("https") == -1)
             {
                 driver.Navigate().GoToUrl("https://forum.gamer.com.tw/" + target);
+                timeouts.ImplicitWait = new TimeSpan(0, 0, 10);
+
             }
             else
             {
                 driver.Navigate().GoToUrl(target);
+                return;
+                return;
             }
+
+            article_panel.Visible = true;
+            article_output_box.Visible = true;
+            article_closed_button.Visible = true;
+            next_page_button.Visible = false;
+            pre_page_button.Visible = false;
+
+            var article_title = driver.FindElement(By.ClassName("c-post__header__title"));
+            var article = driver.FindElement(By.ClassName("c-article__content"));
+            article_output_box.Text = article_title.Text + "\n";
+            article_output_box.Text += article.Text + "\n";
         }
 
         private void Game_search_Button1_Click(object sender, EventArgs e)
@@ -133,6 +150,18 @@ namespace anigamer_app
         {
             driver.Quit();
             Application.ExitThread();
+        }
+
+        private void ariticle_closed_button_Click(object sender, EventArgs e)
+        {
+            driver.Navigate().Back();
+            timeouts = driver.Manage().Timeouts();
+            timeouts.ImplicitWait = new TimeSpan(0, 0, 5);
+            article_panel.Visible = false;
+            article_output_box.Visible = false;
+            article_closed_button.Visible = false;
+            next_page_button.Visible = true;
+            pre_page_button.Visible = true;
         }
     }
 }
